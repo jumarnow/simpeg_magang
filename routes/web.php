@@ -11,26 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pegawai.index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('pegawai.index');
+    });    
+    Route::get('pegawai/pdf', 'PegawaiController@pdf')->name('pegawai-pdf');
+    Route::resource('/pegawai', 'PegawaiController');    
+    Route::resource('/pendidikan', 'PendidikanController');
+    Route::resource('/pelatihan', 'PelatihanController');
+    Route::resource('/pengalaman', 'PengalamanController');    
+    Route::resource('/agama', 'AgamaController');
+    Route::resource('/negara', 'NegaraController');
+    Route::resource('/darah', 'DarahController');
+    Route::resource('/keluarga', 'KeluargaController');
+    Route::resource('/chart', 'ChartController');
+    Route::resource('pegawai.pendidikan', 'PendidikanController');
+    Route::get('pegawai/pendidikan/{id}','PendidikanController@pel');
+    Route::resource('pegawai.pelatihan', 'PelatihanController');
+    Route::get('pegawai/pelatihan/{id}','PelatihanController@pel');
+    Route::resource('pegawai.pengalaman', 'PengalamanController');
+    Route::get('pegawai/pengalaman/{id}','PengalamanController@pel');
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
-Route::get('pegawai/pdf', 'PegawaiController@pdf')->name('pegawai-pdf');
-Route::resource('/pegawai', 'PegawaiController');
-// Route::resource('/pelatihan', 'PelatihanController');
-// Route::resource('/jabatan', 'JabatanController');
-Route::resource('/pendidikan', 'PendidikanController');
-Route::resource('/pelatihan', 'PelatihanController');
-Route::resource('/pengalaman', 'PengalamanController');
-// Route::resource('/keluarga', 'KeluargaController');
-Route::resource('/agama', 'AgamaController');
-Route::resource('/negara', 'NegaraController');
-Route::resource('/darah', 'DarahController');
-Route::resource('/keluarga', 'KeluargaController');
-Route::resource('pegawai.pendidikan', 'PendidikanController');
-Route::get('pegawai/pendidikan/{id}','PendidikanController@pel');
-Route::resource('pegawai.pelatihan', 'PelatihanController');
-Route::get('pegawai/pelatihan/{id}','PelatihanController@pel');
-Route::resource('pegawai.pengalaman', 'PengalamanController');
-Route::get('pegawai/pengalaman/{id}','PengalamanController@pel');
+Auth::routes();
+
 
