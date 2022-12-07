@@ -56,7 +56,7 @@
         </div>
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item @yield('dashboard')" href="/"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item @yield('dashboard')" href="{{ url('/') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
         <li class="treeview"><a class="app-menu__item @yield('master')" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Tabel Master</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{route('agama.index')}}"><i class="icon fa fa-circle-o"></i> Agama</a></li>

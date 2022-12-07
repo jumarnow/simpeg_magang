@@ -14,7 +14,7 @@ class ChartController extends Controller
     public function index()
     {
         //
-        return view('chart.index', compact('index'));
+        return view('chart.index');
     }
 
     /**
